@@ -40,3 +40,33 @@ function myFunction(){
         }
     }
 }
+
+ // Access the modal
+ var modal = document.getElementById("imageModal");
+
+ // Access the image in the modal
+ var modalImg = document.getElementById("modalImage");
+ var captionText = document.getElementById("caption");
+ 
+ // Loop through all images and add click event
+ allCards.forEach(function(card) {
+     card.addEventListener("click", function() {
+         var img = card.querySelector("img");
+         modal.style.display = "block";
+         modalImg.src = img.src;
+         captionText.innerHTML = card.querySelector("h2").innerText;
+     });
+ });
+ 
+ // Close the modal when the close button is clicked
+ var span = document.getElementsByClassName("close")[0];
+ span.onclick = function() { 
+     modal.style.display = "none";
+ }
+ 
+ // Close the modal when clicking outside the image
+ window.onclick = function(event) {
+     if (event.target == modal) {
+         modal.style.display = "none";
+     }
+ }
